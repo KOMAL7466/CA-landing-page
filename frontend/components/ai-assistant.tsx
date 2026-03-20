@@ -5,10 +5,8 @@ import axios from 'axios'
 import { Clock, AlertTriangle, MessageSquare, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
-// ✅ Base URL - automatically switches between local and production
-const BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://ca-landing-page.onrender.com/'    // Your Render backend URL
-  : 'http://localhost:8000'
+// ✅ Correct BASE_URL - your live backend
+const BASE_URL = 'https://ca-landing-page.onrender.com'
 
 export default function AIAssistant() {
   // Chat states
@@ -34,7 +32,7 @@ export default function AIAssistant() {
     setLoading(true)
 
     try {
-      // ✅ Using BASE_URL for production/local
+      // ✅ Correct endpoint: /api/chat
       const res = await axios.post(`${BASE_URL}/api/chat`, {
         message: chatMessage
       })
